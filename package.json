@@ -1,13 +1,13 @@
 {
   "name": "opencode-firecrawl-ng",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "OpenCode plugin that provides tool calls for Firecrawl",
   "keywords": [
     "firecrawl",
     "opencode",
     "opencode-plugin",
-    "websearch",
-    "scraping"
+    "scraping",
+    "websearch"
   ],
   "license": "AGPL-3.0-or-later",
   "author": "Eric Rodrigues Pires <eric@eric.dev.br>",

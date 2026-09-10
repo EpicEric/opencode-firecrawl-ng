@@ -24,7 +24,7 @@ const qdrByTbs = {
   year: "qdr:y",
 };
 
-export const FirecrawlNgPlugin: Plugin = async ({ client, $ }) => ({
+export const FirecrawlNgPlugin: Plugin = async ({ $ }) => ({
   tool: {
     "firecrawl-search": tool({
       description: "Search the web using Firecrawl.",
@@ -42,7 +42,7 @@ export const FirecrawlNgPlugin: Plugin = async ({ client, $ }) => ({
     }),
     "firecrawl-scrape": tool({
       description:
-        "Scrape a URL into markdown using Firecrawl (handles JavaScript-rendered pages). Use as a fallback when webfetch fails or returns poor results.",
+        "Scrape a URL into markdown using Firecrawl (handles JavaScript-rendered pages). Use as a fallback for complex scraping scenarios, NOT for simple file downloads with curl or when webfetch works fine.",
       args: {
         url: tool.schema.string().describe("URL to scrape"),
       },
@@ -50,11 +50,13 @@ export const FirecrawlNgPlugin: Plugin = async ({ client, $ }) => ({
     }),
     "firecrawl-developer": tool({
       description:
-        "Search an index built for coding agents: GitHub issues, merged PRs, repository READMEs, and curated documentation sites. Express repository, source, language, topic, license, and other scoping intent in the query text; semantic retrieval handles the scoping.",
+        "Search an index built for coding agents: GitHub issues, merged PRs, repository READMEs, and curated documentation sites. Use as a fallback for research and documentation, NOT for fetching specific files like commits, source code, or API responses.",
       args: {
         query: tool.schema
           .string()
-          .describe("Natural-language developer question or search phrase"),
+          .describe(
+            "Natural-language developer question or search phrase; express repository, language, topic, and other scoping intent in the text",
+          ),
       },
       execute: ({ query }) => $`firecrawl developer ${query}`.text(),
     }),
