@@ -27,7 +27,7 @@ const qdrByTbs = {
 export const FirecrawlNgPlugin: Plugin = async ({ client, $ }) => ({
   tool: {
     "firecrawl-search": tool({
-      description: "Search the web using Firecrawl",
+      description: "Search the web using Firecrawl.",
       args: {
         query: tool.schema.string().describe("Search query"),
         tbs: tool.schema
@@ -39,6 +39,24 @@ export const FirecrawlNgPlugin: Plugin = async ({ client, $ }) => ({
       },
       execute: ({ query, tbs }) =>
         $`firecrawl search ${query} ${tbs ? ["--tbs", qdrByTbs[tbs]] : []}`.text(),
+    }),
+    "firecrawl-scrape": tool({
+      description:
+        "Scrape a URL into markdown using Firecrawl (handles JavaScript-rendered pages). Use as a fallback when webfetch fails or returns poor results.",
+      args: {
+        url: tool.schema.string().describe("URL to scrape"),
+      },
+      execute: ({ url }) => $`firecrawl scrape ${url}`.text(),
+    }),
+    "firecrawl-developer": tool({
+      description:
+        "Search an index built for coding agents: GitHub issues, merged PRs, repository READMEs, and curated documentation sites. Express repository, source, language, topic, license, and other scoping intent in the query text; semantic retrieval handles the scoping.",
+      args: {
+        query: tool.schema
+          .string()
+          .describe("Natural-language developer question or search phrase"),
+      },
+      execute: ({ query }) => $`firecrawl developer ${query}`.text(),
     }),
   },
 });
