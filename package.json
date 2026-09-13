@@ -1,6 +1,6 @@
 {
   "name": "opencode-firecrawl-ng",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "OpenCode plugin that provides tool calls for Firecrawl",
   "keywords": [
     "firecrawl",
@@ -13,13 +13,21 @@
   "author": "Eric Rodrigues Pires <eric@eric.dev.br>",
   "repository": "github:EpicEric/opencode-firecrawl-ng",
   "files": [
-    "index.ts"
+    "index.ts",
+    "server.ts",
+    "tui.ts",
+    "rpc.ts"
   ],
   "type": "module",
   "main": "./index.ts",
-  "exports": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./server": "./server.ts",
+    "./tui": "./tui.ts",
+    "./rpc": "./rpc.ts"
+  },
   "dependencies": {
-    "@opencode-ai/plugin": "^1.18.29"
+    "@opencode/plugin": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^26.5.0"

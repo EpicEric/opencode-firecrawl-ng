@@ -2,9 +2,11 @@
 
 OpenCode plugin that provides tool calls for Firecrawl.
 
-Currently, [`firecrawl-search`](https://www.firecrawl.dev/search), [`firecrawl-developer`](https://www.firecrawl.dev/developer-index), and [`firecrawl-scrape`](https://www.firecrawl.dev/scrape) are implemented.
+Currently, [`firecrawl_developer`](https://www.firecrawl.dev/developer-index) and [`firecrawl_scrape`](https://www.firecrawl.dev/scrape) are implemented.
 
 > [!Note]
+> Requires OpenCode v2.
+>
 > LLM disclaimer: Most of the code was generated with large language models.
 
 ## Installation
@@ -25,6 +27,6 @@ Finally, add the following to your ~/.config/opencode/opencode.json file:
 
 ```json
 {
-  "plugin": ["opencode-firecrawl-ng"]
+  "plugins": ["github:EpicEric/opencode-firecrawl-ng#v2"]
 }
 ```

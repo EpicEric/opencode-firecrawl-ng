@@ -1,1 +1,1 @@
-export { FirecrawlNgPlugin as FirecrawlNgPlugin } from "../../index";
+export { default } from "../../index";
